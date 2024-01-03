@@ -1,12 +1,12 @@
-<div>
-    <h1><a href="/">Select Prompt</a></h1>
-</div>
+{% extends 'prompt/base.html' %}
 
-{% for prompt in prompts %}
-    <div>
-        <p>index: {{ prompt.index }}</p>
-        <p>type: {{ prompt.type }}</p>
-        <h1><a href="">{{ prompt.grade }}</a></h1>
-        <p>{{ prompt.prompt|linebreaks }}</p>
-    </div>
-{% endfor %}
+{% block content %}
+    {% for prompt in prompts %}
+        <div>
+            <p>index: {{ prompt.index }}</p>
+            <p>type: {{ prompt.type }}</p>
+            <h1><a href="{% url 'ai' pk=prompt.index %}">{{ prompt.grade }}</a></h1>
+            <p>{{ prompt.prompt|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

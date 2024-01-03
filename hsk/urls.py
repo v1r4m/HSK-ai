@@ -20,5 +20,6 @@ from prompt import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.prompt, name='prompt')
+    path('', views.prompt, name='prompt'),
+    path('ai/<pk>', views.ai, name='ai')
 ]
