@@ -13,7 +13,8 @@
         document.getElementById('blank-maker').addEventListener('click', function(e) {
             e.preventDefault();
 
-            var promptContent = document.getElementById('prompt-content').innerText;
+            var promptContent = document.getElementById('prompt-content').textContent;
+            console.log(promptContent);
 
             fetch('/api/blank', {
                 method: 'POST',
