@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'prompt',
     'rest_framework',
+    "openai",
+    "asgiref"
 ]
 
 MIDDLEWARE = [

@@ -3,18 +3,19 @@
 {% block content %}
     <div class="prompt">
         <h1>{{ prompt.index }}</h1>
-        <p id="prompt-content">{{ prompt.prompt|linebreaks }}</p>
+        <p id="prompt-content">{{ prompt.prompt|linebreaksbr|safe }}</p>
     </div>
     <div>
         <h3><a href="#" id="blank-maker">빈칸문제 만들기</a></h3>
     </div>
+    <div id="response-question"></div>
+    <div id="response-answer"></div>
 
     <script>
         document.getElementById('blank-maker').addEventListener('click', function(e) {
             e.preventDefault();
 
-            var promptContent = document.getElementById('prompt-content').textContent;
-            console.log(promptContent);
+            var promptContent = document.getElementById('prompt-content').innerText;
 
             fetch('/api/blank', {
                 method: 'POST',
@@ -25,7 +26,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Handle the response data here
+                document.getElementById('response-question').innerText = JSON.stringify(data);
                 console.log(data);
             })
             .catch((error) => {
