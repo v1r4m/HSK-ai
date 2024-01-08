@@ -9,7 +9,15 @@
         <h3><a href="#" id="blank-maker">빈칸문제 만들기</a></h3>
     </div>
     <div id="response-question"></div>
-    <div id="response-answer"></div>
+    <!-- Add a 'hidden' class to the 'response-answer' div -->
+    <div id="response-answer" class="hidden"></div>
+
+    <style>
+        /* Add a CSS rule to hide elements with the 'hidden' class */
+        .hidden {
+            display: none;
+        }
+    </style>
 
     <script>
         document.getElementById('blank-maker').addEventListener('click', function(e) {
@@ -26,8 +34,19 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('response-question').innerText = JSON.stringify(data);
                 console.log(data);
+                var json_return = JSON.parse(data);
+                
+                document.getElementById('response-question').innerText = json_return.question_and_answer_with_blank;
+                document.getElementById('response-answer').innerText = json_return.word_in_blank;
+                //document.getElementById('wrong-answer').innerText = json_return.wrong_word_in_blank;
+                console.log(json_return);
+
+                // Add a click event listener to the 'response-question' div
+                document.getElementById('response-question').addEventListener('click', function() {
+                    // Remove the 'hidden' class from the 'response-answer' div
+                    document.getElementById('response-answer').classList.remove('hidden');
+                });
             })
             .catch((error) => {
                 console.error('Error:', error);
