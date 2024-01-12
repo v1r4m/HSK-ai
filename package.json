@@ -1,4 +1,7 @@
 {
+  "scripts":{
+    "build:css": "npx tailwindcss-cli -i ./prompt/static/css/input.css -o ./prompt/static/css/output.css"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   }
