@@ -10,6 +10,11 @@
     </div>
     <div id="response-question"></div>
     <!-- Add a 'hidden' class to the 'response-answer' div -->
+    <div id="response-select1"></div>
+    <div id="response-select2"></div>
+    <div id="response-select3"></div>
+    <div id="response-select4"></div>
+    <button id="submit-answer" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hidden">제출</button>
     <div id="response-answer" class="hidden"></div>
 
     <style>
@@ -39,17 +44,27 @@
                 
                 document.getElementById('response-question').innerText = json_return.question_and_answer_with_blank;
                 document.getElementById('response-answer').innerText = json_return.word_in_blank;
+                if (!json_return.wrong_word_in_blank) {
+                    //TODO: 다시 시도하세요.
+                }
+                console.log(json_return.wrong_word_in_blank);
+                const random = Math.floor(Math.random() * 4) //0,1,2,3;
+                json_return.wrong_word_in_blank.splice(random, 0, json_return.word_in_blank);
+                document.getElementById('response-select1').innerText = '①'+json_return.wrong_word_in_blank[0];
+                document.getElementById('response-select2').innerText = '②'+json_return.wrong_word_in_blank[1];
+                document.getElementById('response-select3').innerText = '③'+json_return.wrong_word_in_blank[2];
+                document.getElementById('response-select4').innerText = '④'+json_return.wrong_word_in_blank[3];
                 //document.getElementById('wrong-answer').innerText = json_return.wrong_word_in_blank;
                 console.log(json_return);
 
-                // Add a click event listener to the 'response-question' div
-                document.getElementById('response-question').addEventListener('click', function() {
-                    // Remove the 'hidden' class from the 'response-answer' div
+                document.getElementById('submit-answer').classList.remove('hidden');
+
+                document.getElementById('submit-answer').addEventListener('click', function() {
                     document.getElementById('response-answer').classList.remove('hidden');
                 });
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error(error);
             });
         });
     </script>
