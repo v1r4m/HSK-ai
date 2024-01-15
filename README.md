@@ -14,7 +14,7 @@ npm run build:css
 ``` 
 ### run django
 ```
-source /venv/bin/activate
+source venv/bin/activate
 (venv) python3 manage.py runserver
 ```
 
