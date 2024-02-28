@@ -173,3 +173,7 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
 prompt/static/css/output.css
+
+cool_lambda.py
+lambda.py
+test.py

@@ -29,7 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'hskai.pythonanywhere.com'
+    'hskai.pythonanywhere.com',
+    '.vercel.app',
 ]
 
 
@@ -76,7 +77,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hsk.wsgi.application'
+#WSGI_APPLICATION = 'hsk.wsgi.application'
+
+WSGI_APPLICATION = 'hsk.wsgi.app'
 
 
 # Database
